@@ -45,4 +45,34 @@ void main() {
     scoala.eliminaClasa("1A");
     System.out.println("Clase dupa eliminare: " +  scoala.getNumarClase());
     System.out.println("Total elevi: " +  scoala.getTotalElevi());
+
+    //Activitati
+    Profesor p1 = new Profesor("Dima");
+    Profesor p2 = new Profesor("Silviulescu");
+    scoala.adaugaActivitate("Fotbal", new  Activitate("Fotbal", p1));
+    scoala.adaugaActivitate("Cor", new  Activitate("Cor", p2));
+
+    Elev dan = new Elev("Dan", Gen.Masculin);
+    Elev maria = new Elev("Maria", Gen.Feminin);
+    scoala.adaugaElevInClasa("2B", dan);
+    scoala.adaugaElevInClasa("4B", maria);
+
+    scoala.inscrieElev("Fotbal", dan);
+    scoala.inscrieElev("Cor", maria);
+    scoala.inscrieElev("Cor", dan);
+
+    //Elev care nu e in nicio clasa (cerinta 3)
+    Elev vlad = new Elev("Vlad", Gen.Masculin);
+    scoala.inscrieElev("Fotbal", vlad);
+
+    System.out.println("Top activitati: ");
+    scoala.afiseazaTopActivitati();
+    System.out.println("Elevi cu cel putin o activitate: " + scoala.getNumarEleviCuActivitate());
+
+    scoala.eliminareElevDinActivitate("Fotbal", vlad);
+    scoala.eliminaActivitate("Cor");
+    System.out.println("Top activitati dupa stergerea corului: ");
+    scoala.afiseazaTopActivitati();
+    System.out.println("Nr. elevi cu cel putin o activitate: " + scoala.getNumarEleviCuActivitate());
+
 }
